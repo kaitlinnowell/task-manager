@@ -96,24 +96,6 @@ function renderTaskList() {
         createTaskCard(task)
         }
     }
-    // Update the draggable initialization to set z-index on start
-    $(".draggable").draggable({
-        helper: 'clone',
-        appendTo: 'body', // Append the helper to the body
-        start: function(event, ui) {
-            // Set width and height to match the original card's dimensions
-            ui.helper.width($(this).width());
-            ui.helper.height($(this).height());
-            // Set a high z-index value
-            ui.helper.css('z-index', 1000);
-            // Center-align text within the helper
-            ui.helper.find('.card-body').css('text-align', 'center');
-        },
-        stop: function(event, ui) {
-            // Remove the helper from the DOM after drag stops
-            $(ui.helper).remove();
-        }
-    })
 }
 
 // handle adding a new task
@@ -184,25 +166,6 @@ function handleDrop(event, ui) {
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
     $("#datepicker").datepicker();
-
-    // Update the draggable initialization to set z-index on start
-    $(".draggable").draggable({
-        helper: 'clone',
-        appendTo: 'body', // Append the helper to the body
-        start: function(event, ui) {
-            // Set width and height to match the original card's dimensions
-            ui.helper.width($(this).width());
-            ui.helper.height($(this).height());
-            // Set a high z-index value
-            ui.helper.css('z-index', 1000);
-            // Center-align text within the helper
-            ui.helper.find('.card-body').css('text-align', 'center');
-        },
-        stop: function(event, ui) {
-            // Remove the helper from the DOM after drag stops
-            $(ui.helper).remove();
-        }
-    })
 
     renderTaskList();
 
